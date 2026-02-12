@@ -2,7 +2,7 @@
 export interface User {
   id: string;
   email: string;
-  name: string;
+  full_name: string;
   plan: UserPlan;
   is_active: boolean;
   created_at: string;
@@ -18,7 +18,7 @@ export interface LoginCredentials {
 export interface RegisterData {
   email: string;
   password: string;
-  name: string;
+  full_name: string;
 }
 
 export interface AuthTokens {

@@ -57,7 +57,7 @@ export function Header() {
               <User className="h-4 w-4 text-primary" />
             </div>
             <span className="hidden sm:block text-foreground font-medium">
-              {user?.name || user?.email}
+              {user?.full_name || user?.email}
             </span>
           </button>
 
@@ -70,7 +70,7 @@ export function Header() {
               <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-border z-20 py-1">
                 <div className="px-4 py-2 border-b border-border">
                   <p className="text-sm font-medium text-foreground">
-                    {user?.name}
+                    {user?.full_name}
                   </p>
                   <p className="text-xs text-muted-foreground">{user?.email}</p>
                   <span className="inline-block mt-1 px-2 py-0.5 text-xs font-medium bg-primary/10 text-primary rounded-full capitalize">

@@ -39,7 +39,7 @@ export default function RegisterPage() {
     setError("");
     setLoading(true);
     try {
-      await register({ email, password, name });
+      await register({ email, password, full_name: name });
       router.push("/setup");
     } catch (err: any) {
       setError(err.message || "Ошибка регистрации. Попробуйте ещё раз.");
