@@ -45,7 +45,7 @@ export default function DashboardPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-foreground">
-            Добро пожаловать, {user?.name}!
+            Добро пожаловать, {user?.full_name}!
           </h1>
           <p className="text-muted-foreground mt-1">
             Обзор активности
