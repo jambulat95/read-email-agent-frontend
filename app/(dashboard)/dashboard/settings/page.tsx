@@ -7,25 +7,25 @@ const settingsItems = [
   {
     name: "Профиль",
     description: "Имя, email и пароль",
-    href: "/dashboard/settings/profile",
+    href: "/dashboard/settings/profile" as const,
     icon: User,
   },
   {
     name: "Уведомления",
     description: "Email, Telegram и SMS уведомления",
-    href: "/dashboard/settings/notifications",
+    href: "/dashboard/settings/notifications" as const,
     icon: Bell,
   },
   {
     name: "Компания",
     description: "Название, индустрия и тон ответов",
-    href: "/dashboard/settings/company",
+    href: "/dashboard/settings/company" as const,
     icon: Building2,
   },
   {
     name: "Email аккаунты",
     description: "Подключённые Gmail аккаунты",
-    href: "/dashboard/settings/accounts",
+    href: "/dashboard/settings/accounts" as const,
     icon: Mail,
   },
 ];

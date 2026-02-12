@@ -159,7 +159,7 @@ export default function ReviewsPage() {
                 >
                   <td className="px-6 py-4">
                     <Link
-                      href={`/dashboard/reviews/${review.id}`}
+                      href={`/dashboard/reviews/${review.id}` as any}
                       className="block"
                     >
                       <p className="text-sm font-medium text-foreground truncate max-w-xs">
@@ -221,7 +221,7 @@ export default function ReviewsPage() {
           {data?.items?.map((review) => (
             <Link
               key={review.id}
-              href={`/dashboard/reviews/${review.id}`}
+              href={`/dashboard/reviews/${review.id}` as any}
               className="block p-4 hover:bg-muted/30 transition-colors"
             >
               <div className="flex items-start justify-between gap-2 mb-1">

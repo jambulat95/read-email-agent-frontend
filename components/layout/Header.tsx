@@ -15,10 +15,10 @@ import {
 import { cn } from "@/lib/utils";
 
 const navigation = [
-  { name: "Главная", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Отзывы", href: "/dashboard/reviews", icon: MessageSquare },
-  { name: "Аналитика", href: "/dashboard/analytics", icon: BarChart3 },
-  { name: "Настройки", href: "/dashboard/settings", icon: Settings },
+  { name: "Главная", href: "/dashboard" as const, icon: LayoutDashboard },
+  { name: "Отзывы", href: "/dashboard/reviews" as const, icon: MessageSquare },
+  { name: "Аналитика", href: "/dashboard/analytics" as const, icon: BarChart3 },
+  { name: "Настройки", href: "/dashboard/settings" as const, icon: Settings },
 ];
 
 export function Header() {

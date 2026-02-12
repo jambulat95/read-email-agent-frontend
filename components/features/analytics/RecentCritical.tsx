@@ -40,7 +40,7 @@ export function RecentCritical({ reviews }: RecentCriticalProps) {
         {critical.slice(0, 5).map((review) => (
           <Link
             key={review.id}
-            href={`/dashboard/reviews/${review.id}`}
+            href={`/dashboard/reviews/${review.id}` as any}
             className="block p-3 rounded-lg border border-border hover:bg-muted/50 transition-colors"
           >
             <div className="flex items-start justify-between gap-2 mb-1">
