@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { api } from "@/lib/api";
 import { ArrowLeft, Mail, Plus, Trash2 } from "lucide-react";
@@ -15,10 +16,15 @@ export default function AccountsSettingsPage() {
   });
   const accounts = data?.accounts;
 
+  const [connectError, setConnectError] = useState("");
+
   const connectMutation = useMutation({
     mutationFn: () => api.emailAccounts.connectUrl(),
     onSuccess: (data) => {
       window.location.href = data.authorization_url;
+    },
+    onError: (err: any) => {
+      setConnectError(err.message || "Не удалось подключить Gmail. Попробуйте позже.");
     },
   });
 
@@ -57,6 +63,12 @@ export default function AccountsSettingsPage() {
           Подключить Gmail
         </button>
       </div>
+
+      {connectError && (
+        <div className="mb-4 p-3 text-sm text-red-600 bg-red-50 rounded-lg border border-red-200">
+          {connectError}
+        </div>
+      )}
 
       {isLoading ? (
         <div className="space-y-3">

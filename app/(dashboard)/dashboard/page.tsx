@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 import { api } from "@/lib/api";
 import { useAuthStore } from "@/stores/authStore";
 import {
@@ -14,6 +15,7 @@ import {
   AlertTriangle,
   TrendingUp,
   CheckCircle,
+  Mail,
 } from "lucide-react";
 import { StatCard, StatCardSkeleton } from "@/components/features/analytics/StatCard";
 import { SentimentChart } from "@/components/features/analytics/SentimentChart";
@@ -39,6 +41,12 @@ export default function DashboardPage() {
     queryKey: ["reviews", { page: 1, page_size: 20 }],
     queryFn: () => api.reviews.list({ page: 1, page_size: 20 }),
   });
+
+  const { data: emailAccountsData } = useQuery({
+    queryKey: ["emailAccounts"],
+    queryFn: () => api.emailAccounts.list(),
+  });
+  const hasEmailAccounts = (emailAccountsData?.accounts?.length ?? 0) > 0;
 
   return (
     <div>
@@ -67,6 +75,31 @@ export default function DashboardPage() {
           ))}
         </div>
       </div>
+
+      {/* Email not connected banner */}
+      {!hasEmailAccounts && (
+        <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-amber-100 rounded-lg">
+              <Mail className="h-5 w-5 text-amber-600" />
+            </div>
+            <div>
+              <p className="text-sm font-medium text-amber-900">
+                Gmail не подключён
+              </p>
+              <p className="text-xs text-amber-700">
+                Подключите почту, чтобы начать автоматический анализ отзывов
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/dashboard/settings/accounts"
+            className="shrink-0 px-4 py-2 text-sm font-medium text-white bg-amber-600 rounded-lg hover:bg-amber-700 transition-colors"
+          >
+            Подключить
+          </Link>
+        </div>
+      )}
 
       {/* Stats Grid */}
       {summaryLoading ? (
