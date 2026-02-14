@@ -227,6 +227,15 @@ export default function ReviewDetailPage() {
               </button>
             </div>
 
+            {regenerateMutation.isError && (
+              <div className="mb-4 px-4 py-3 text-sm text-orange-700 bg-orange-50 border border-orange-200 rounded-lg">
+                Генерация ответов доступна на тарифе Starter и выше.{" "}
+                <a href="/dashboard/settings" className="underline font-medium">
+                  Сменить тариф
+                </a>
+              </div>
+            )}
+
             {draftsLoading ? (
               <div className="space-y-3">
                 {[...Array(2)].map((_, i) => (
